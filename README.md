@@ -1,69 +1,62 @@
-# React + TypeScript + Vite
+# Pet Shop Web Page - 研修課題
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+このリポジトリは、ペットショップのトップページを作成する研修課題の成果物です。
+Figmaで提供されたデザインを基に、実践的なコンポーネント設計やモダンなフロントエンド開発手法を学ぶことを目的としています。
 
-Currently, two official plugins are available:
+## 課題の目的と学習目標
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+この課題では、以下の項目を意識して実装に取り組みます。
 
-## Expanding the ESLint configuration
+- **汎用的なコンポーネント設計:**
+  - 共通項を見出し、Atomic Designの考え方を取り入れた再利用性の高いコンポーネントを設計する。
+  - ディレクトリ構成を工夫し、コンポーネントの責務を明確に分離する。
+- **レスポンシブデザイン:**
+  - 様々なデバイス幅に対応できるレスポンシブなレイアウトを実装する。
+- **セマンティックなHTML:**
+  - SEOやアクセシビリティを意識した、意味的に正しいHTML構造でマークアップする。
+- **デザインの再現性:**
+  - Figmaのデザインを正確に再現し、デザイナーとの円滑な連携を想定した実装を行う。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## デザインリソース
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Figmaデザイン:** [Petshop Top Page](https://www.figma.com/file/1qpODb7s0PTbftA08HduOI/LH_petshop?type=design&node-id=1-2&mode=design&t=fT3e2QvW7ZK64qhw-0)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 技術スタック
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **フレームワーク:** React, Vite
+- **言語:** TypeScript
+- **スタイリング:** Tailwind CSS
+- **静的解析:** ESLint, Prettier
+
+## ディレクトリ構成
+
+本プロジェクトでは、[Bulletproof React](https://zenn.dev/manalink_dev/articles/bulletproof-react-is-best-architecture)の考え方を参考に、以下のようなディレクトリ構成を採用しています。
+
+```
+src/
+├── assets/         # 画像やフォントなどの静的リソース
+├── components/     # 再利用可能なコンポーネント
+│   ├── features/   # 特定の機能に関連するコンポーネント
+│   └── ui/         # 汎用的なUIパーツ (Button, Inputなど)
+├── styles/         # グローバルなスタイル
+└── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## セットアップと実行方法
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **依存関係のインストール:**
+   ```bash
+   npm install
+   ```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **開発サーバーの起動:**
+   ```bash
+   npm run dev
+   ```
+   サーバーが起動したら、 http://localhost:5173 にアクセスしてください。
+
+## 参考資料
+
+- **Atomic Design:** [参考記事](https://www.crunchtimer.jp/blog/15849)
+- **ディレクトリ構成:** [Bulletproof React](https://zenn.dev/manalink_dev/articles/bulletproof-react-is-best-architecture)
+- **セマンティックHTML:** [参考記事](https://takayamato.com/html-seo/)
